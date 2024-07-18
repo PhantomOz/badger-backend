@@ -52,6 +52,7 @@ export async function verifyContract(
   contractName: string,
   constructorArguments?: string[]
 ): Promise<string> {
+  await compileContract(contractName, contractSourceCode);
   return new Promise<string>((resolve, reject) => {
     setTimeout(() => {
       const child = spawn(
