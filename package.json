@@ -1,9 +1,11 @@
 {
   "name": "badger-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "tsc & node .",
+    "dev": "tsc & nodemon ."
   },
   "keywords": [],
   "author": "",
@@ -11,11 +13,15 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "node-ts": "^6.0.1"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.11",
+    "hardhat": "^2.22.6",
+    "nodemon": "^3.1.4",
     "typescript": "^5.5.3"
   }
 }
