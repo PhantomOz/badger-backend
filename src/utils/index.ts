@@ -3,7 +3,10 @@ import fsPromises from "fs/promises";
 import { spawn } from "child_process";
 import { Addressable } from "ethers";
 
-export async function compileContract(name: string, contract: string) {
+export async function compileContract(
+  name: string,
+  contract: string
+): Promise<string> {
   name = name.replace(" ", "");
   (async function main() {
     try {
