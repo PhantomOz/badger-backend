@@ -3,6 +3,7 @@ import { compileContract, verifyContract } from "../utils";
 
 export async function compile(req: Request, res: Response) {
   let { name, contract } = req.body;
+  console.log("loading", contract);
   try {
     const compiledContract = await compileContract(name, contract);
     res.status(200).json({ data: compiledContract });
@@ -19,7 +20,7 @@ export async function verify(req: Request, res: Response) {
     constructorArguments,
   } = req.body;
   try {
-    const verified = verifyContract(
+    const verified = await verifyContract(
       contractAddress,
       contractSourceCode,
       contractName,

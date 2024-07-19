@@ -5,3 +5,5 @@ const router = Router();
 
 router.post("/compile", compile);
 router.post("/verify", verify);
+
+export default router;

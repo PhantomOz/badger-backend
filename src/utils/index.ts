@@ -1,21 +1,23 @@
 import fs from "fs";
 import fsPromises from "fs/promises";
 import { spawn } from "child_process";
-import { Addressable } from "ethers";
+import { AbiCoder, Addressable, ethers, solidityPacked } from "ethers";
+const code = new AbiCoder();
 
 export async function compileContract(
   name: string,
   contract: string
 ): Promise<string> {
   name = name.replace(" ", "");
+  contract = ethers.toUtf8String(contract);
   (async function main() {
     try {
-      await fsPromises.writeFile("../../contracts/Lock.sol", contract);
+      await fsPromises.writeFile("contracts/Lock.sol", contract);
 
       console.log("File written successfully");
       console.log("The written file has" + " the following contents:");
 
-      console.log("" + fs.readFileSync("../../contracts/Lock.sol"));
+      console.log("" + fs.readFileSync("contracts/Lock.sol"));
     } catch (err) {
       console.error(err);
     }
@@ -31,7 +33,7 @@ export async function compileContract(
       if (code === 0) {
         try {
           let compiledContract = fs.readFileSync(
-            `../../artifacts/contracts/Lock.sol/${name}.json`,
+            `artifacts/contracts/Lock.sol/${name}.json`,
             "utf8"
           );
           resolve(compiledContract);
