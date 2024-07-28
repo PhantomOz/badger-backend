@@ -61,7 +61,7 @@ export async function verifyContract(
   return new Promise<string>((resolve, reject) => {
     setTimeout(() => {
       const child = spawn(
-        `npx hardhat verify --network sepolia ${contractAddress} ${constructorArguments?.join(
+        `npx hardhat verify --network testnet ${contractAddress} ${constructorArguments?.join(
           " "
         )}`,
         {
