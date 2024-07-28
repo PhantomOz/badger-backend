@@ -1,13 +1,22 @@
-# Sample Hardhat Project
+# Badger Protocol Server
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+This server is where all contracts are compiled and Verified.
 
-Try running some of the following tasks:
+## Usage
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
+Provide step-by-step instructions on how to get a development environment running.
+
+```bash
+git clone https://github.com/PhantomOz/Badger-backend
+cd badger
+npm install
+npm run dev
 ```
+
+## Smart Contract
+
+You can find the Badger smart contracts - [HERE](https://github.com/PhantomOz/badger-contract)
+
+## Frontend
+
+You can find the Badger Frontend - [HERE](https://github.com/PhantomOz/badger-)
