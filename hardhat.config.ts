@@ -2,7 +2,6 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.24",
   networks: {
     testnet: {
       url: `${process.env.SEP_RPC_URL}`,
@@ -21,6 +20,27 @@ const config: HardhatUserConfig = {
         },
       },
     ],
+  },
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.20",
+        settings: {
+          optimizer: {
+            enabled: false,
+            runs: 200,
+          },
+        },
+      },
+    ],
+  },
+  paths: {
+    sources: "./contracts",
+    cache: "./cache",
+    artifacts: "./artifacts",
+  },
+  mocha: {
+    timeout: 20000,
   },
 };
 

@@ -8,11 +8,10 @@ async function compile(req, res) {
     console.log("loading", contract);
     try {
         const compiledContract = await (0, utils_1.compileContract)(name, contract);
-        console.log(compiledContract);
         res.status(200).json({ data: compiledContract });
     }
     catch (e) {
-        console.log(e);
+        res.status(500).json(e);
     }
 }
 async function verify(req, res) {

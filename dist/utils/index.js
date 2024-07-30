@@ -10,42 +10,9 @@ const promises_1 = __importDefault(require("fs/promises"));
 const child_process_1 = require("child_process");
 const ethers_1 = require("ethers");
 const code = new ethers_1.AbiCoder();
-console.log((0, ethers_1.solidityPacked)(["string"], [
-    `// SPDX-License-Identifier: MIT
-// Compatible with OpenZeppelin Contracts ^5.0.0
-pragma solidity ^0.8.20;
-
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-
-contract GettingCode is ERC20 {
-    constructor() ERC20("Getting Code", "GCT") {
-        _mint(msg.sender, 1000 * 10 ** decimals());
-    }
-}`,
-]));
-// console.log(
-//   "\n Here is Bytes32: ",
-//   encodeBytes32String(
-//     solidityPacked(
-//       ["string"],
-//       [
-//         `// SPDX-License-Identifier: MIT
-// // Compatible with OpenZeppelin Contracts ^5.0.0
-// pragma solidity ^0.8.20;
-// import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-// contract GettingCode is ERC20 {
-//     constructor() ERC20("Getting Code", "GCT") {
-//         _mint(msg.sender, 1000 * 10 ** decimals());
-//     }
-// }`,
-//       ]
-//     )
-//   )
-// );
 async function compileContract(name, contract) {
     name = name.replace(" ", "");
     contract = ethers_1.ethers.toUtf8String(contract);
-    console.log(contract);
     (async function main() {
         try {
             await promises_1.default.writeFile("contracts/Lock.sol", contract);
@@ -82,7 +49,7 @@ async function verifyContract(contractAddress, contractSourceCode, contractName,
     await compileContract(contractName, contractSourceCode);
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const child = (0, child_process_1.spawn)(`npx hardhat verify --network sepolia ${contractAddress} ${constructorArguments?.join(" ")}`, {
+            const child = (0, child_process_1.spawn)(`npx hardhat verify --network testnet ${contractAddress} ${constructorArguments?.join(" ")}`, {
                 stdio: "inherit",
                 shell: true,
             });
