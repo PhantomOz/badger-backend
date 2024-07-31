@@ -12,12 +12,12 @@ export async function compileContract(
   contract = ethers.toUtf8String(contract);
   (async function main() {
     try {
-      await fsPromises.writeFile("contracts/Lock.sol", contract);
+      await fsPromises.writeFile("contracts/Contract.sol", contract);
 
       console.log("File written successfully");
       console.log("The written file has" + " the following contents:");
 
-      console.log("" + fs.readFileSync("contracts/Lock.sol"));
+      console.log("" + fs.readFileSync("contracts/Contract.sol"));
     } catch (err) {
       console.error(err);
     }
@@ -33,7 +33,7 @@ export async function compileContract(
       if (code === 0) {
         try {
           let compiledContract = fs.readFileSync(
-            `artifacts/contracts/Lock.sol/${name}.json`,
+            `artifacts/contracts/Contract.sol/${name}.json`,
             "utf8"
           );
           resolve(compiledContract);
